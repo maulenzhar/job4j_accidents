@@ -1,14 +1,20 @@
 package ru.job4j.accidents.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import ru.job4j.accidents.service.AccidentService;
 
-@Controller
+@Controller("/statement")
+@AllArgsConstructor
 public class IndexController {
-    @GetMapping("/")
+
+    private final AccidentService accidentService;
+
+    @GetMapping
     public String index(Model model) {
-        model.addAttribute("user", "Petr Arsentev");
-        return "index";
+        model.addAttribute("statements", accidentService.findAll());
+        return "statements/list";
     }
 }

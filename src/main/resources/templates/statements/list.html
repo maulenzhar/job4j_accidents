@@ -30,7 +30,7 @@
                 <tbody>
                 <tr th:each="statement: ${statements}">
                     <td th:text="${statement.id}"/>
-                    <td><a th:text="${statement.name}" th:href="@{/statements/{statementId}(statementId=${statement.id})}"></a></td>
+                    <td><a th:text="${statement.name}" th:href="@{/accident/{statementId}(statementId=${statement.id})}"></a></td>
                     <td th:text="${statement.text}"/>
                     <td th:text="${statement.address}"/>
                 </tr>
@@ -38,7 +38,7 @@
             </table>
         </div>
     </div>
-    <footer th:insert="blocks/foot :: foot"></footer>
+<!--    <footer th:insert="blocks/foot :: foot"></footer>-->
 
 </div>
 </body>

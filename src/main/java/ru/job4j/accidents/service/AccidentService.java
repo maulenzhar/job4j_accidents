@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface AccidentService {
-    Accident save(Accident vacancy);
+    Accident save(Accident accident);
 
     boolean deleteById(int id);
 

@@ -2,6 +2,7 @@ package ru.job4j.accidents.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
+import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
 import java.util.Map;
@@ -14,11 +15,11 @@ public class AccidentMem implements AccidentRepository {
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
     public AccidentMem() {
-        save(new Accident(0, "Accident 1", "Lorem ipsum test", "Lorem ipsum address"));
-        save(new Accident(0, "Accident 2", "Lorem ipsum test", "Lorem ipsum address"));
-        save(new Accident(0, "Accident 3", "Lorem ipsum test", "Lorem ipsum address"));
-        save(new Accident(0, "Accident 4", "Lorem ipsum test", "Lorem ipsum address"));
-        save(new Accident(0, "Accident 5", "Lorem ipsum test", "Lorem ipsum address"));
+        save(new Accident(0, "Accident 1", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
+        save(new Accident(0, "Accident 2", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
+        save(new Accident(0, "Accident 3", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
+        save(new Accident(0, "Accident 4", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
+        save(new Accident(0, "Accident 5", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
     }
 
     public Optional<Accident> findById(int id) {
@@ -44,7 +45,7 @@ public class AccidentMem implements AccidentRepository {
     public boolean update(Accident accident) {
         return accidents.computeIfPresent(accident.getId(), (id, oldAccident) -> {
             return new Accident(oldAccident.getId(), accident.getName(),
-                    accident.getText(), accident.getAddress());
+                    accident.getText(), accident.getAddress(), accident.getType());
         })  != null;
     }
 }

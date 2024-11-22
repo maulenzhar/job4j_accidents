@@ -45,4 +45,11 @@ public class AccidentController {
         model.addAttribute("accident", accident.get());
         return "statements/one";
     }
+
+    @GetMapping("/formUpdateAccident")
+    public String update(@RequestParam("id") int id, Model model) {
+        model.addAttribute("accident", accidents.findById(id).get());
+        return "statements/update";
+    }
+
 }

@@ -25,6 +25,7 @@
                     <th scope="col">Автонарушение</th>
                     <th scope="col">Описание</th>
                     <th scope="col">Адрес</th>
+                    <th scope="col">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,11 @@
                     <td><a th:text="${statement.name}" th:href="@{/accident/{statementId}(statementId=${statement.id})}"></a></td>
                     <td th:text="${statement.text}"/>
                     <td th:text="${statement.address}"/>
+                    <td>
+                        <a th:href="@{|/formUpdateAccident?id=${statement.id}|}">
+                            <span th:text="${statement.name}"></span>
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

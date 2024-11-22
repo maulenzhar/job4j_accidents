@@ -60,7 +60,4 @@ public class AccidentController {
         model.addAttribute("accident", accidents.findById(id).get());
         return "statements/update";
     }
-
-
-
 }

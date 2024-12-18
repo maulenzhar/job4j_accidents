@@ -8,11 +8,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentMem implements AccidentRepository {
-    private int idCounter = 1;
-    private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
+    private final AtomicInteger idCounter = new AtomicInteger(0);    private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
     public AccidentMem() {
         save(new Accident(0, "Accident 1", "Lorem ipsum test", "Lorem ipsum address", new AccidentType(1, "две машины")));
@@ -32,7 +32,7 @@ public class AccidentMem implements AccidentRepository {
 
     @Override
     public Accident save(Accident accident) {
-        accident.setId(idCounter++);
+        accident.setId(idCounter.incrementAndGet());
         accidents.put(accident.getId(), accident);
         return accident;
     }

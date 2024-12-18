@@ -3,8 +3,6 @@ package ru.job4j.accidents.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.AccidentType;
-import ru.job4j.accidents.repository.AccidentMem;
-import ru.job4j.accidents.repository.AccidentRepository;
 import ru.job4j.accidents.repository.AccidentTypeMem;
 import ru.job4j.accidents.repository.AccidentTypeRepository;
 

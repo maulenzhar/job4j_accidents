@@ -1,18 +1,18 @@
 package ru.job4j.accidents.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentTypeMem implements AccidentTypeRepository {
 
-    private int idCounter = 1;
+    private final AtomicInteger idCounter = new AtomicInteger(0);
 
     private final Map<Integer, AccidentType> accidentTypes = new ConcurrentHashMap<>();
 
@@ -25,7 +25,7 @@ public class AccidentTypeMem implements AccidentTypeRepository {
 
     @Override
     public AccidentType save(AccidentType accidentType) {
-        accidentType.setId(idCounter++);
+        accidentType.setId(idCounter.incrementAndGet());
         accidentTypes.put(accidentType.getId(), accidentType);
         return accidentType;
     }

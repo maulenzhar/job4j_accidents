@@ -4,23 +4,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
-import ru.job4j.accidents.repository.AccidentMem;
-import ru.job4j.accidents.repository.AccidentRepository;
-import ru.job4j.accidents.repository.AccidentTypeMem;
-import ru.job4j.accidents.repository.AccidentTypeRepository;
+import ru.job4j.accidents.model.Rule;
+import ru.job4j.accidents.repository.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AccidentServiceImpl implements AccidentService {
 
-    private AccidentRepository accidentRepository = new AccidentMem();
-    private AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
+    private final AccidentRepository accidentRepository = new AccidentMem();
+    private final AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
+    private final RuleRepository ruleRepository = new RuleMem();
 
     @Override
-    public Accident save(Accident accident) {
+    public Accident save(Accident accident, String[] ruleIds) {
+        accident.setRule(getRules(ruleIds));
         setType(accident);
         return accidentRepository.save(accident);
     }
@@ -31,7 +33,8 @@ public class AccidentServiceImpl implements AccidentService {
     }
 
     @Override
-    public boolean update(Accident accident) {
+    public boolean update(Accident accident, String[] ruleIds) {
+        accident.setRule(getRules(ruleIds));
         setType(accident);
         return accidentRepository.update(accident);
     }
@@ -50,5 +53,14 @@ public class AccidentServiceImpl implements AccidentService {
         AccidentType type = accidentTypeRepository.findById(accident.getType().getId())
                 .orElse(accident.getType());
         accident.setType(type);
+    }
+
+    private List<Rule> getRules(String[] ruleIds) {
+        List<Rule> rules = new ArrayList<>();
+        for (String id : ruleIds) {
+            Optional<Rule> rule = ruleRepository.findById(Integer.parseInt(id));
+            rule.ifPresent(rules::add);
+        }
+        return rules;
     }
 }

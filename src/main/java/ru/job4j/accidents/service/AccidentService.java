@@ -6,11 +6,11 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface AccidentService {
-    Accident save(Accident accident);
+    Accident save(Accident accident, String[] ruleIds);
 
     boolean deleteById(int id);
 
-    boolean update(Accident accident);
+    boolean update(Accident accident, String[] ruleIds);
 
     Optional<Accident> findById(int id);
 

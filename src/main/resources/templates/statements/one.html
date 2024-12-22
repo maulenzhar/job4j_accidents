@@ -30,11 +30,23 @@
                     <option th:each="type: ${types}"
                             th:text="${type.name}"
                             th:value="${type.id}"
-                            th:selected="${type.id} == ${selectedTypeId}">>
+                            th:selected="${type.id} == ${selectedTypeId}">
 
                     </option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="type.id" name="rIds">Статья</label>
+                <select class="form-control" id="rIds" name="rIds" multiple>
+                    <option th:each="rule: ${rules}"
+                            th:text="${rule.name}"
+                            th:value="${rule.id}"
+                            th:selected="${selectedRuleIds}">
+                    </option>
+                </select>
+            </div>
+
             <div class="mb-3 row">
                 <div class="col-6"></div>
                 <div class="col-6">

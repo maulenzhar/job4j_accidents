@@ -20,7 +20,6 @@ public class AccidentTypeMem implements AccidentTypeRepository {
         save(new AccidentType(0, "Две машины"));
         save(new AccidentType(0, "Машина и человек"));
         save(new AccidentType(0, "Машина и велосипед"));
-
     }
 
     @Override

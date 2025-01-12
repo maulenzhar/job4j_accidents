@@ -1,0 +1,44 @@
+package ru.job4j.accidents.service.jdbcservice;
+
+import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+import ru.job4j.accidents.model.Rule;
+import ru.job4j.accidents.repository.RuleRepository;
+import ru.job4j.accidents.service.RuleService;
+
+import java.util.Collection;
+import java.util.Optional;
+
+@Service
+@Primary
+@AllArgsConstructor
+public class RuleServiceJdbcImpl implements RuleService {
+
+    private final RuleRepository ruleRepository;
+
+    @Override
+    public Rule save(Rule rule) {
+        return ruleRepository.save(rule);
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return ruleRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean update(Rule rule) {
+        return ruleRepository.update(rule);
+    }
+
+    @Override
+    public Optional<Rule> findById(int id) {
+        return ruleRepository.findById(id);
+    }
+
+    @Override
+    public Collection<Rule> findAll() {
+        return ruleRepository.findAll();
+    }
+}

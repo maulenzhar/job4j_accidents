@@ -2,6 +2,7 @@ package ru.job4j.accidents.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,11 @@ import ru.job4j.accidents.service.RuleService;
 @Controller
 @AllArgsConstructor
 public class AccidentController {
+    @Qualifier("accidentServiceJdbcImpl")
     private final AccidentService accidents;
+    @Qualifier("accidentTypeServiceJdbcImpl")
     private final AccidentTypeService accidentTypeService;
+    @Qualifier("ruleServiceJdbcImpl")
     private final RuleService ruleService;
 
     @GetMapping("/")

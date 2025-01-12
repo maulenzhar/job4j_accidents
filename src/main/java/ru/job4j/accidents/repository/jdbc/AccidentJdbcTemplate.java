@@ -83,10 +83,10 @@ public class AccidentJdbcTemplate implements AccidentRepository {
 
         Optional<Accident> accident = accidents.stream().findFirst();
         if (accident.isPresent()) {
-            List<Rule> rules = jdbc.query("select r.id, r.name " +
-                            "from rule r " +
-                            "join accident_rule ar on ar.rule_id = r.id " +
-                            "where ar.accident_id = ?",
+            List<Rule> rules = jdbc.query("select r.id, r.name "
+                            + "from rule r "
+                            + "join accident_rule ar on ar.rule_id = r.id "
+                            + "where ar.accident_id = ?",
                     (rs, row) -> {
                         Rule rule = new Rule();
                         rule.setId(rs.getInt("id"));

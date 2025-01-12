@@ -25,7 +25,6 @@ import java.util.Optional;
 public class AccidentServiceJdbcImpl implements AccidentService {
     private final AccidentJdbcTemplate accidentsRepository;
     private final AccidentTypeJdbcTemplate accidentTypeJdbcTemplate;
-//    private final AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
     private final RuleRepository ruleRepository = new RuleMem();
 
     @Override

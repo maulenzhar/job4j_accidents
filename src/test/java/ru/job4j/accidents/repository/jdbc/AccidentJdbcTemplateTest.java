@@ -47,7 +47,6 @@ class AccidentJdbcTemplateTest {
 
         accidentJdbcTemplate.save(accident);
 
-        // Проверяем данные
         Integer countAccidents = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM accident", Integer.class);
         assertEquals(1, countAccidents);
 

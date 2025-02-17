@@ -43,5 +43,4 @@ public class AccidentServiceImpl implements AccidentService<AccidentORM> {
         return accidentsRepostiory.findAll();
     }
 
-
 }

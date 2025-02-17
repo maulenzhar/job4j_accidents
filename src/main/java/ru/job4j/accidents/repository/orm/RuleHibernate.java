@@ -41,9 +41,9 @@ public class RuleHibernate implements RuleRepository<RuleORM> {
     public boolean update(RuleORM rule) {
         try (Session session = sf.openSession()) {
             int query = session
-                    .createQuery("UPDATE RuleORM SET " +
-                            "name = :fName " +
-                            "WHERE id = :fId")
+                    .createQuery("UPDATE RuleORM SET "
+                            + "name = :fName "
+                            + "WHERE id = :fId")
                     .setParameter("fName", rule.getName())
                     .executeUpdate();
             return query > 0;

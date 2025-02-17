@@ -24,7 +24,7 @@ public class AccidentServiceImpl implements AccidentService<Accident> {
     public Accident save(Accident accident, String[] ruleIds) {
         accident.setRule(getRules(ruleIds));
         setType(accident);
-        return (Accident)accidentRepository.save(accident);
+        return (Accident) accidentRepository.save(accident);
     }
 
     @Override

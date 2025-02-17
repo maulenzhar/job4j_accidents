@@ -40,9 +40,9 @@ public class AccidentHibernate implements AccidentRepository<AccidentORM> {
         try (Session session = sf.openSession()) {
             Transaction tx = session.beginTransaction();
             int query = session
-                    .createQuery("UPDATE AccidentORM SET " +
-                            "name = :fName, text = :fText, address = :fAddress  " +
-                            "WHERE id = :fId")
+                    .createQuery("UPDATE AccidentORM SET "
+                            + "name = :fName, text = :fText, address = :fAddress  "
+                            + "WHERE id = :fId")
                     .setParameter("fName", accident.getName())
                     .setParameter("fText", accident.getText())
                     .setParameter("fAddress", accident.getAddress())

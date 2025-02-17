@@ -39,9 +39,9 @@ public class AccidentTypeHibernate implements AccidentTypeRepository<AccidentTyp
     public boolean update(AccidentTypeORM accidentType) {
         try (Session session = sf.openSession()) {
             int query = session
-                    .createQuery("UPDATE AccidentTypeORM SET " +
-                            "name = :fName " +
-                            "WHERE id = :fId")
+                    .createQuery("UPDATE AccidentTypeORM SET "
+                            + "name = :fName "
+                            + "WHERE id = :fId")
                     .setParameter("fName", accidentType.getName())
                     .executeUpdate();
             return query > 0;

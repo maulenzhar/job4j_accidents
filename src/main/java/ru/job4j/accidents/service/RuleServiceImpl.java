@@ -9,10 +9,10 @@ import ru.job4j.accidents.repository.RuleRepository;
 import java.util.Collection;
 import java.util.Optional;
 
-@Service
+@Service("ruleJdbc")
 @RequiredArgsConstructor
-public class RuleServiceImpl implements RuleService {
-    private RuleRepository ruleRepository = new RuleMem();
+public class RuleServiceImpl implements RuleService<Rule> {
+    private RuleRepository<Rule> ruleRepository = new RuleMem();
 
     @Override
     public Rule save(Rule rule) {

@@ -5,14 +5,14 @@ import ru.job4j.accidents.model.AccidentType;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface AccidentTypeRepository {
-    AccidentType save(AccidentType accidentType);
+public interface AccidentTypeRepository<T> {
+    T save(T accidentType);
 
     boolean deleteById(int id);
 
-    boolean update(AccidentType accidentType);
+    boolean update(T accidentType);
 
-    Optional<AccidentType> findById(int id);
+    Optional<T> findById(int id);
 
-    Collection<AccidentType> findAll();
+    Collection<T> findAll();
 }

@@ -12,19 +12,19 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("accidentServiceJdbc")
 @RequiredArgsConstructor
-public class AccidentServiceImpl implements AccidentService {
+public class AccidentServiceImpl implements AccidentService<Accident> {
 
-    private final AccidentRepository accidentRepository = new AccidentMem();
-    private final AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
-    private final RuleRepository ruleRepository = new RuleMem();
+    private final AccidentRepository<Accident> accidentRepository = new AccidentMem();
+    private final AccidentTypeRepository<AccidentType> accidentTypeRepository = new AccidentTypeMem();
+    private final RuleRepository<Rule> ruleRepository = new RuleMem();
 
     @Override
     public Accident save(Accident accident, String[] ruleIds) {
         accident.setRule(getRules(ruleIds));
         setType(accident);
-        return accidentRepository.save(accident);
+        return (Accident)accidentRepository.save(accident);
     }
 
     @Override

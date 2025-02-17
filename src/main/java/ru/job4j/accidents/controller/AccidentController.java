@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.accidents.model.Accident;
+import ru.job4j.accidents.model.orm.AccidentORM;
+import ru.job4j.accidents.model.orm.AccidentTypeORM;
+import ru.job4j.accidents.model.orm.RuleORM;
 import ru.job4j.accidents.service.AccidentService;
 import ru.job4j.accidents.service.AccidentTypeService;
 import ru.job4j.accidents.service.RuleService;
@@ -13,9 +15,9 @@ import ru.job4j.accidents.service.RuleService;
 @Controller
 @AllArgsConstructor
 public class AccidentController {
-    private final AccidentService accidents;
-    private final AccidentTypeService accidentTypeService;
-    private final RuleService ruleService;
+    private final AccidentService<AccidentORM> accidents;
+    private final AccidentTypeService<AccidentTypeORM> accidentTypeService;
+    private final RuleService<RuleORM> ruleService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -31,14 +33,14 @@ public class AccidentController {
     }
 
     @PostMapping("/saveAccident")
-    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
+    public String save(@ModelAttribute AccidentORM accident, HttpServletRequest req) {
         String[] ruleIds = req.getParameterValues("rIds");
         accidents.save(accident, ruleIds);
         return "redirect:/";
     }
 
     @PostMapping("/editAccident")
-    public String edit(@ModelAttribute Accident accident, HttpServletRequest req) {
+    public String edit(@ModelAttribute AccidentORM accident, HttpServletRequest req) {
         String[] ruleIds = req.getParameterValues("rIds");
         accidents.update(accident, ruleIds);
         return "redirect:/";

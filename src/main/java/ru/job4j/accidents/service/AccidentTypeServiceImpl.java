@@ -9,11 +9,11 @@ import ru.job4j.accidents.repository.AccidentTypeRepository;
 import java.util.Collection;
 import java.util.Optional;
 
-@Service
+@Service("accidentTypeJdbc")
 @RequiredArgsConstructor
-public class AccidentTypeServiceImpl implements AccidentTypeService {
+public class AccidentTypeServiceImpl implements AccidentTypeService<AccidentType> {
 
-    private AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
+    private final AccidentTypeRepository<AccidentType> accidentTypeRepository = new AccidentTypeMem();
 
     @Override
     public AccidentType save(AccidentType accidentType) {

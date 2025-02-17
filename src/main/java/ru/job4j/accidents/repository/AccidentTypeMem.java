@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
-public class AccidentTypeMem implements AccidentTypeRepository {
+public class AccidentTypeMem implements AccidentTypeRepository<AccidentType> {
 
     private final AtomicInteger idCounter = new AtomicInteger(0);
 

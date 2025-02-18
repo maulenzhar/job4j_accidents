@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:db-${spring.profiles.active}.properties")
+@PropertySource("classpath:db-test.properties")
 @EnableTransactionManagement
 public class HbmConfig {
 

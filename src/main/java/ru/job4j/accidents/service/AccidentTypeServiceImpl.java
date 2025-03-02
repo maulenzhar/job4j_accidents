@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AccidentTypeServiceImpl implements AccidentTypeService {
+public class AccidentTypeServiceImpl implements AccidentTypeService<AccidentType> {
 
     private AccidentTypeRepository accidentTypeRepository = new AccidentTypeMem();
 

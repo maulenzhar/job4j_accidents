@@ -5,14 +5,14 @@ import ru.job4j.accidents.model.Rule;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface RuleService {
-    Rule save(Rule rule);
+public interface RuleService<T> {
+    T save(T rule);
 
     boolean deleteById(int id);
 
-    boolean update(Rule rule);
+    boolean update(T rule);
 
-    Optional<Rule> findById(int id);
+    Optional<T> findById(int id);
 
-    Collection<Rule> findAll();
+    Collection<T> findAll();
 }

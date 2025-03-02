@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class RuleServiceImpl implements RuleService {
+public class RuleServiceImpl implements RuleService<Rule> {
     private RuleRepository ruleRepository = new RuleMem();
 
     @Override

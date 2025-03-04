@@ -38,6 +38,6 @@ public class AccidentTypeServiceImplData implements AccidentTypeService<Accident
 
     @Override
     public Collection<AccidentTypeEntity> findAll() {
-        return (Collection<AccidentTypeEntity>) accidentTypeRepo.findAll();
+        return accidentTypeRepo.findAll();
     }
 }

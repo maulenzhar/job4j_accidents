@@ -40,6 +40,6 @@ public class RuleServiceImplData implements RuleService<RuleEntity> {
 
     @Override
     public Collection<RuleEntity> findAll() {
-        return (Collection<RuleEntity>) ruleRepo.findAll();
+        return ruleRepo.findAll();
     }
 }

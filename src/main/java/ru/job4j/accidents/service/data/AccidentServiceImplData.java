@@ -47,7 +47,7 @@ public class AccidentServiceImplData implements AccidentService<AccidentEntity> 
 
     @Override
     public Collection<AccidentEntity> findAll() {
-        return (Collection<AccidentEntity>) accidentRepository.findAll();
+        return accidentRepository.findAll();
     }
 
     private List<RuleEntity> getRules(String[] ruleIds) {

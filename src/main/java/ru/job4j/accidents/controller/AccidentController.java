@@ -2,10 +2,10 @@ package ru.job4j.accidents.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.entity.AccidentEntity;
 import ru.job4j.accidents.model.entity.AccidentTypeEntity;
 import ru.job4j.accidents.model.entity.RuleEntity;
@@ -22,6 +22,7 @@ public class AccidentController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("statements", accidentServiceImplData.findAll());
         return "statements/list";
     }

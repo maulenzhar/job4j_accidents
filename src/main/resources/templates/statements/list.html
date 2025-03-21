@@ -28,6 +28,7 @@
                     <th scope="col">Действия</th>
                 </tr>
                 </thead>
+                <div th:text="'Login as : ' + ${user.username}"></div>
                 <tbody>
                 <tr th:each="statement: ${statements}">
                     <td th:text="${statement.id}"/>

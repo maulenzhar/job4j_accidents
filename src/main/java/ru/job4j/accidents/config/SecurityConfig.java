@@ -1,4 +1,4 @@
-package ru.job4j.accidents.security;
+package ru.job4j.accidents.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/login", "/reg").permitAll()
                         .requestMatchers("/**").hasAnyRole("ADMIN", "USER")
                 )
                 .formLogin(form -> form

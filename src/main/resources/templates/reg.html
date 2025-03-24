@@ -8,6 +8,9 @@
     <title>Reg</title>
 </head>
 <body>
+    <div th:if="${not #strings.isEmpty(errorMessage)}" style="color:red; font-weight: bold; margin: 30px 0px;">
+        <span th:text="${errorMessage}"></span>
+    </div>
     <form  th:action="@{/reg}"  method='POST'>
         <table>
             <tr>

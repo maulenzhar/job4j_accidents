@@ -43,8 +43,12 @@ public class LoginController {
     }
 
     @PostMapping("/reg")
-    public String regSave(@ModelAttribute User user) {
-        userService.save(user);
+    public String regSave(@ModelAttribute User user, Model model) {
+       if (userService.save(user) == null) {
+           model.addAttribute("errorMessage", "Error occured");
+           return "reg";
+       }
+
         return "redirect:/login";
     }
 

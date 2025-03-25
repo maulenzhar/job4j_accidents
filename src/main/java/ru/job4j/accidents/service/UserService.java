@@ -1,5 +1,7 @@
 package ru.job4j.accidents.service;
 
+import java.util.Optional;
+
 public interface UserService<T> {
-    T save(T user);
+    Optional<T> save(T user);
 }

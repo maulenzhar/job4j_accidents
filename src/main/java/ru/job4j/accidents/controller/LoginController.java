@@ -44,7 +44,7 @@ public class LoginController {
 
     @PostMapping("/reg")
     public String regSave(@ModelAttribute User user, Model model) {
-       if (userService.save(user) == null) {
+       if (userService.save(user).isEmpty()) {
            model.addAttribute("errorMessage", "Error occured");
            return "reg";
        }
